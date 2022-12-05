@@ -1,0 +1,13 @@
+.letter {
+  text-align: left;
+  background-color: white;
+  color: #222222;
+  max-width: 1000px;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 0.375rem;
+}
+
+.small-break {
+  margin-bottom: 0;
+}

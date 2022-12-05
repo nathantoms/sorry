@@ -3,7 +3,6 @@ import './App.css';
 import {
   createBrowserRouter,
   RouterProvider,
-  Route,
 } from "react-router-dom";
 import { Sorry } from './components/Sorry';
 
@@ -17,7 +16,6 @@ const router = createBrowserRouter([
     element: About(),
   }
 ]);
-
 
 export default function App() {
   return (
@@ -40,8 +38,4 @@ function Home() {
 
 function About() {
   return <h2>About</h2>;
-}
-
-function Users() {
-  return <h2>Users</h2>;
 }
