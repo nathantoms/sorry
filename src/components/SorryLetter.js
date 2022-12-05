@@ -1,5 +1,6 @@
 import React from 'react';
-import './SorryLetter.css'
+import './SorryLetter.css';
+import { WhatsappShare } from './WhatsappShare';
 
 export const SorryLetter = ({aggrieved, perpetrator, eventDescription}) => {
   
@@ -20,6 +21,7 @@ export const SorryLetter = ({aggrieved, perpetrator, eventDescription}) => {
     <>
       <div className="letter">
         {fullLetter()}
+        <WhatsappShare aggrieved={aggrieved} perpetrator={perpetrator} eventDescription={eventDescription}/>
       </div>
     </>
   );
