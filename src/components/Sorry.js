@@ -1,15 +1,23 @@
 import React from 'react';
+import { useSearchParams } from "react-router-dom";
 import SorryForm from './SorryForm';
+import { SorryLetter } from './SorryLetter';
 
-export default class Sorry extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {formSubmittedFalse: false};
+export const Sorry = () => {
+  const [urlParams] = useSearchParams();
+
+
+  const isFormSubmitted = () => {
+    const aggrieved = urlParams.get('aggrieved')
+    const perpetrator = urlParams.get('perpetrator')
+    const events = urlParams.get('events')
+
+    return false;
   }
 
-  render() {
-    return  (
-      <SorryForm />
-    );
-  }
+  return  (
+    <>
+      {isFormSubmitted() ? <SorryLetter /> : <SorryForm />}
+    </>
+  );
 }

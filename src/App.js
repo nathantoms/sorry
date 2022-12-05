@@ -1,34 +1,47 @@
+import React from "react";
 import './App.css';
-import {Route, Link, Routes, useLocation, useSearchParams} from 'react-router-dom';
-import './components/SorryForm';
-import Sorry from './components/Sorry';
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+} from "react-router-dom";
+import { Sorry } from './components/Sorry';
 
-function App() {
-  // const [searchParams, setSearchParams] = useSearchParams();
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: Home(),
+  },
+  {
+    path: "/nt-admin",
+    element: About(),
+  }
+]);
 
-  return (
-    <>
-      <Home />
-    </>
-    // <>
-    //   <Routes>
-    //     <Route path="/nt-admin" element={<></>} />
-    //     <Route path="/" element={<Home />} />
-    //   </Routes>
-    // </>
-  );
-}
 
-function Home() {
+export default function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>We're sorry.</h1>
-        <Sorry />
-        {/* <SorrySplash /> */}
+        <RouterProvider router={router}/>
       </header>
     </div>
   );
 }
 
-export default App;
+function Home() {
+  return (
+    <>
+      <h1>We're sorry.</h1>
+      <Sorry />
+    </>
+  );
+}
+
+function About() {
+  return <h2>About</h2>;
+}
+
+function Users() {
+  return <h2>Users</h2>;
+}
