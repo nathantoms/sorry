@@ -1,5 +1,5 @@
 import React from 'react';
-import SorryForm from './components/SorryForm';
+import SorryForm from './SorryForm';
 
 export default class Sorry extends React.Component {
   constructor(props) {
