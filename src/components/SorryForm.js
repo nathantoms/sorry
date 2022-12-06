@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './SorryForm.css';
 
 export const SorryForm = ({formSubmitted}) => {
   const [formIsValid, setFormIsValid] = useState(false);
@@ -15,18 +16,21 @@ export const SorryForm = ({formSubmitted}) => {
   }
 
   const handleAggrievedChange = (e) => {
-    setAggrieved(e.target.value);
-    handleFormValidation(e.target.value, perpetrator, eventDescription);
+    const value = e.target.value.trim();
+    setAggrieved(value);
+    handleFormValidation(value, perpetrator, eventDescription);
   };
 
   const handlePerpetratorChange = (e) => {
-    setPerpetrator(e.target.value);
-    handleFormValidation(aggrieved, e.target.value, eventDescription);
+    const value = e.target.value.trim();
+    setPerpetrator(value);
+    handleFormValidation(aggrieved, value, eventDescription);
   };
 
   const handleEventsChange = (e) => {
-    setEventDescription(e.target.value);
-    handleFormValidation(aggrieved, perpetrator, e.target.value);
+    const value = e.target.value.trim();
+    setEventDescription(value);
+    handleFormValidation(aggrieved, perpetrator, value);
   };
   
   const submitForm = (e) => {
@@ -40,44 +44,36 @@ export const SorryForm = ({formSubmitted}) => {
   };
 
   return  (
-    <form>
-      <div className="form-group">
-        <label htmlFor="inputName1">Name of the aggrieved</label>
-        <input 
-          type="text"
-          className="form-control"
-          id="inputName1"
-          aria-describedby="nameHelp"
-          placeholder="Aggrieved"
-          onChange={handleAggrievedChange}
-        />
-        <label htmlFor="inputName2">Name of the perpetrator</label>
-        <input
-          type="text"
-          className="form-control"
-          id="inputName2"
-          aria-describedby="nameHelp"
-          placeholder="Perpetrator"
-          onChange={handlePerpetratorChange}
-        />
-        <label htmlFor="inputActions">Description of the events</label>
-        <input
-          type="text"
-          className="form-control"
-          id="inputActions"
-          aria-describedby="nameHelp"
-          placeholder="Events"
-          onChange={handleEventsChange}
-        />
+    <div className="sorry-form-wrapper">
+      <div className="sorry-form-container">
+        <form>
+          <div class="form-group row">
+            <label for="inputAggrieved" class="col-sm-4 col-form-label text-right">Aggrieved</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" id="inputAggrieved" placeholder="Name" onChange={handleAggrievedChange} />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPerpetrator" class="col-sm-4 col-form-label text-right">Perpetrator</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" id="inputPerpetrator" placeholder="Name" onChange={handlePerpetratorChange}/>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputEventDescription" class="col-sm-4 col-form-label text-right">Description of Events</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" id="inputEventDescription" placeholder="Description" onChange={handleEventsChange} />
+            </div>
+          </div>
+          <div className="sorry-form-submit-container">
+            <div class="form-group row">
+              <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary" onClick={submitForm} disabled={!formIsValid}>Submit</button>
+              </div>
+            </div>
+          </div>
+        </form>
       </div>
-      <button
-        type="submit"
-        className="btn btn-primary"
-        onClick={submitForm}
-        disabled={!formIsValid}  
-      >
-          Submit
-      </button>
-    </form>
+    </div>
   );
 }

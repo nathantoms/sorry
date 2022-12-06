@@ -1,3 +1,8 @@
+.letter-container {
+  display: block;
+  margin: 0 auto;
+}
+
 .letter {
   text-align: left;
   background-color: white;
