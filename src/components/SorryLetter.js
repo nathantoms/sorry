@@ -5,7 +5,7 @@ import { WhatsappShare } from './WhatsappShare';
 export const SorryLetter = ({aggrieved, perpetrator, eventDescription}) => {
   
   const fullLetter = () => {
-    console.log('process.env.REACT_APP_AIRTABLE_API_KEY: ', process.env.REACT_APP_AIRTABLE_API_KEY)
+    // console.log('process.env.REACT_APP_AIRTABLE_API_KEY: ', )
 
     return (
       <>

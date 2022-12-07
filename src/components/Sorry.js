@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSearchParams } from "react-router-dom";
 import { SorryForm } from './SorryForm';
 import { SorryLetter } from './SorryLetter';
+import { createRecord } from '../services/AirtableService';
 
 export const Sorry = () => {
   const [urlParams] = useSearchParams();
@@ -21,6 +22,8 @@ export const Sorry = () => {
     urlParams.set('eventDescription', eventDescription);
 
     window.location.search = urlParams;
+
+    createRecord();
   }
 
   return  (
