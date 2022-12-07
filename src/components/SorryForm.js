@@ -60,6 +60,14 @@ export const SorryForm = ({formSubmitted}) => {
             </div>
           </div>
           <div class="form-group row">
+            {/* <div class="col-sm-4 text-right">I was wronged by the whole team</div>
+            <div class="col-sm-6">
+              <div class="form-check check-placement">
+                <input class="form-check-input" type="checkbox" id="gridCheck1" />
+              </div>
+            </div>
+          </div>
+          <div class="form-group row"> */}
             <label for="inputEventDescription" class="col-sm-4 col-form-label text-right">Description of Events</label>
             <div class="col-sm-6">
               <input type="text" class="form-control" id="inputEventDescription" placeholder="Description" onChange={handleEventsChange} />

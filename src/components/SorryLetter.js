@@ -5,12 +5,14 @@ import { WhatsappShare } from './WhatsappShare';
 export const SorryLetter = ({aggrieved, perpetrator, eventDescription}) => {
   
   const fullLetter = () => {
+    console.log('process.env.REACT_APP_AIRTABLE_API_KEY: ', process.env.REACT_APP_AIRTABLE_API_KEY)
+
     return (
       <>
         <p>Dear <strong>{aggrieved}</strong>,</p>
         <p><strong>{perpetrator}</strong>, and all of the Sonning Men's 2nd XI would like to formally apologise for <strong>"{eventDescription}"</strong>.</p>
         <p><strong>{perpetrator}</strong> is working hard to correct this character flaw and the whole team will be supporting him wherever they can with this endeavour.</p>
-        <p>Warmest and sincerest apologies,</p>
+        <p className="small-break">Warmest and sincerest apologies,</p>
         <p>Sonning Men's 2nd XI</p>
       </>
     )
