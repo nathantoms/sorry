@@ -1,23 +1,27 @@
-import Airtable from "airtable";
+import axios from "axios";
+// import Airtable from "airtable";
 
-export async function createRecord(aggrieved, perpetrator, eventDescription) {
-  const base = new Airtable({apiKey: process.env.REACT_APP_AIRTABLE_API_KEY}).base('appQmwSEub5AE32WR');
+export function createRecord(aggrieved, perpetrator, eventDescription) {
 
-  base('Apology').create([
-    {
-      "fields": {
-        "Aggrieved": aggrieved,
-        "Perpetrator": perpetrator,
-        "Event Description": eventDescription,
+  const config = {
+    headers: { Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}` }
+  };
+
+  const bodyParameters = {
+    "records": [
+      {
+        "fields": {
+          "Aggrieved": aggrieved,
+          "Perpetrator": perpetrator,
+          "Event Description": eventDescription
+        }
       }
-    },
-  ], function(err, records) {
-    if (err) {
-      console.error(err);
-      return;
-    }
-    records.forEach(function (record) {
-      console.log(record.getId());
-    });
-  });
+    ]
+  };
+
+  axios.post( 
+    'https://api.airtable.com/v0/appQmwSEub5AE32WR/Apology',
+    bodyParameters,
+    config
+  ).then(console.log).catch(console.log);
 }
