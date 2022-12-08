@@ -8,13 +8,6 @@ export async function createRecord(aggrieved, perpetrator, eventDescription) {
     }
   };
 
-  // const config = {
-  //   headers: { 
-  //     Authorization: `Bearer pat2BtoVOcXBzjgmw.945f8f60a60e461a5b8663c1b54fbc1fe01111b56d0c309ef584f7f98ca1992b`,
-  //     'Content-Type': 'application/json'
-  //   }
-  // };
-
   const bodyParameters = {
     "records": [
       {
