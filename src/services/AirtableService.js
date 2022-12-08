@@ -20,9 +20,39 @@ export async function createRecord(aggrieved, perpetrator, eventDescription) {
     ]
   };
 
-  await axios.post( 
+  const { data } = await axios.post( 
     'https://api.airtable.com/v0/appQmwSEub5AE32WR/Apology',
     bodyParameters,
     config
-  ).then(console.log).catch(console.log);
-}
+  );
+
+  return data;
+};
+
+export async function addComment(apologyId, comment) {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+      'Content-Type': 'application/json'
+    }
+  };
+
+  const bodyParameters = {
+    "records": [
+      {
+        "fields": {
+          "Apology": [apologyId],
+          "Comment": comment
+        }
+      }
+    ]
+  };
+
+  const { data } = await axios.post( 
+    'https://api.airtable.com/v0/appQmwSEub5AE32WR/Comments',
+    bodyParameters,
+    config
+  );
+
+  return data;
+};

@@ -35,6 +35,7 @@ export const SorryForm = ({formSubmitted}) => {
   
   const submitForm = (e) => {
     e.preventDefault();
+    e.target.reset()
 
     formSubmitted(
       aggrieved,
@@ -46,7 +47,7 @@ export const SorryForm = ({formSubmitted}) => {
   return  (
     <div className="sorry-form-wrapper">
       <div className="sorry-form-container">
-        <form>
+        <form onSubmit={submitForm}>
           <div className="form-group row">
             <label htmlFor="inputAggrieved" className="col-sm-4 col-form-label text-right">Aggrieved</label>
             <div className="col-sm-6">
@@ -76,7 +77,7 @@ export const SorryForm = ({formSubmitted}) => {
           <div className="sorry-form-submit-container">
             <div className="form-group row">
               <div className="col-sm-10">
-                <button type="submit" className="btn btn-primary" onClick={submitForm} disabled={!formIsValid}>Submit</button>
+                <button type="submit" className="btn btn-primary" disabled={!formIsValid}>Submit</button>
               </div>
             </div>
           </div>

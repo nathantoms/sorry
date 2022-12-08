@@ -1,5 +1,6 @@
 import React from 'react';
 import './WhatsappShare.css';
+import { ReactComponent as WhatsappIcon } from '../assets/whatsapp.svg';
 
 export const WhatsappShare = ({aggrieved, perpetrator, eventDescription}) => {
   const fullUrl = () => {
@@ -13,7 +14,7 @@ export const WhatsappShare = ({aggrieved, perpetrator, eventDescription}) => {
 
   return (
     <>
-      <a href={fullUrl()}>Share to Whatsapp</a>
+      <a href={fullUrl()}>Share to Whatsapp <WhatsappIcon className="whatsapp-icon" /></a>
     </>
   );
 }

@@ -1,12 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './SorryLetter.css';
 import { WhatsappShare } from './WhatsappShare';
+import { CommentForm } from './CommentForm';
 
-export const SorryLetter = ({aggrieved, perpetrator, eventDescription}) => {
-  
+export const SorryLetter = ({aggrieved, perpetrator, eventDescription, apologyId}) => {
   const fullLetter = () => {
-    // console.log('process.env.REACT_APP_AIRTABLE_API_KEY: ', )
-
     return (
       <>
         <p>Dear <strong>{aggrieved}</strong>,</p>
@@ -22,7 +20,14 @@ export const SorryLetter = ({aggrieved, perpetrator, eventDescription}) => {
     <div className="letter-container">
       <div className="letter">
         {fullLetter()}
-        <WhatsappShare aggrieved={aggrieved} perpetrator={perpetrator} eventDescription={eventDescription}/>
+        <div className="letter-footer">
+          <div className="comments">
+            <CommentForm apologyId={apologyId} />
+          </div>
+          <div className="whatsapp">
+            <WhatsappShare aggrieved={aggrieved} perpetrator={perpetrator} eventDescription={eventDescription}/>
+          </div>
+        </div>
       </div>
     </div>
   );
