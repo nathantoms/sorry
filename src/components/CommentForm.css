@@ -2,7 +2,3 @@
   display: flex;
   flex-direction: row;
 }
-
-.comment-box {
-  min-width: 500px;
-}
