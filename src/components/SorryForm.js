@@ -47,36 +47,36 @@ export const SorryForm = ({formSubmitted}) => {
     <div className="sorry-form-wrapper">
       <div className="sorry-form-container">
         <form>
-          <div class="form-group row">
-            <label for="inputAggrieved" class="col-sm-4 col-form-label text-right">Aggrieved</label>
-            <div class="col-sm-6">
-              <input type="text" class="form-control" id="inputAggrieved" placeholder="Name" onChange={handleAggrievedChange} />
+          <div className="form-group row">
+            <label htmlFor="inputAggrieved" className="col-sm-4 col-form-label text-right">Aggrieved</label>
+            <div className="col-sm-6">
+              <input type="text" className="form-control" id="inputAggrieved" placeholder="Name" onChange={handleAggrievedChange} />
             </div>
           </div>
-          <div class="form-group row">
-            <label for="inputPerpetrator" class="col-sm-4 col-form-label text-right">Perpetrator</label>
-            <div class="col-sm-6">
-              <input type="text" class="form-control" id="inputPerpetrator" placeholder="Name" onChange={handlePerpetratorChange}/>
+          <div className="form-group row">
+            <label htmlFor="inputPerpetrator" className="col-sm-4 col-form-label text-right">Perpetrator</label>
+            <div className="col-sm-6">
+              <input type="text" className="form-control" id="inputPerpetrator" placeholder="Name" onChange={handlePerpetratorChange}/>
             </div>
           </div>
-          <div class="form-group row">
-            {/* <div class="col-sm-4 text-right">I was wronged by the whole team</div>
-            <div class="col-sm-6">
-              <div class="form-check check-placement">
-                <input class="form-check-input" type="checkbox" id="gridCheck1" />
+          <div className="form-group row">
+            {/* <div className="col-sm-4 text-right">I was wronged by the whole team</div>
+            <div className="col-sm-6">
+              <div className="form-check check-placement">
+                <input className="form-check-input" type="checkbox" id="gridCheck1" />
               </div>
             </div>
           </div>
-          <div class="form-group row"> */}
-            <label for="inputEventDescription" class="col-sm-4 col-form-label text-right">Description of Events</label>
-            <div class="col-sm-6">
-              <input type="text" class="form-control" id="inputEventDescription" placeholder="Description" onChange={handleEventsChange} />
+          <div className="form-group row"> */}
+            <label htmlFor="inputEventDescription" className="col-sm-4 col-form-label text-right">Description of Events</label>
+            <div className="col-sm-6">
+              <input type="text" className="form-control" id="inputEventDescription" placeholder="Description" onChange={handleEventsChange} />
             </div>
           </div>
           <div className="sorry-form-submit-container">
-            <div class="form-group row">
-              <div class="col-sm-10">
-                <button type="submit" class="btn btn-primary" onClick={submitForm} disabled={!formIsValid}>Submit</button>
+            <div className="form-group row">
+              <div className="col-sm-10">
+                <button type="submit" className="btn btn-primary" onClick={submitForm} disabled={!formIsValid}>Submit</button>
               </div>
             </div>
           </div>

@@ -23,7 +23,7 @@ export const Sorry = () => {
 
     window.location.search = urlParams;
 
-    createRecord();
+    createRecord(aggrieved, perpetrator, eventDescription);
   }
 
   return  (
