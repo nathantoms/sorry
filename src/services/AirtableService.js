@@ -1,8 +1,6 @@
 import axios from "axios";
-// import Airtable from "airtable";
 
-export function createRecord(aggrieved, perpetrator, eventDescription) {
-
+export async function createRecord(aggrieved, perpetrator, eventDescription) {
   const config = {
     headers: { Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}` }
   };
@@ -19,7 +17,7 @@ export function createRecord(aggrieved, perpetrator, eventDescription) {
     ]
   };
 
-  axios.post( 
+  await axios.post( 
     'https://api.airtable.com/v0/appQmwSEub5AE32WR/Apology',
     bodyParameters,
     config
