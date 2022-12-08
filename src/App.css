@@ -39,3 +39,13 @@
     transform: rotate(360deg);
   }
 }
+
+.no-styling {
+  text-decoration: none;
+  color: white;
+}
+
+.no-styling:hover {
+  text-decoration: none;
+  color: white;
+}
