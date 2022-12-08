@@ -7,7 +7,7 @@ export const CommentForm = ({apologyId}) => {
   const [commentForm, setCommentForm] = useState("")
 
   const checkFormValidity = (formValue) => {
-    return (formValue && formValue != "")
+    return (formValue && formValue != "");
   }
 
   const handleCommentChange = (e) => {
@@ -18,8 +18,11 @@ export const CommentForm = ({apologyId}) => {
 
   const submitForm = async (e) => {
     e.preventDefault();
-    e.target.reset()
+    e.target.reset();
     await addComment(apologyId, commentForm);
+
+    setCommentForm("");
+    setFormIsValid(false);
   };
 
   return (
