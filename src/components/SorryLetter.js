@@ -1,9 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './SorryLetter.css';
+import { getComments } from '../services/AirtableService';
 import { WhatsappShare } from './WhatsappShare';
 import { CommentForm } from './CommentForm';
+import { CommentList } from './CommentList';
 
 export const SorryLetter = ({aggrieved, perpetrator, eventDescription, apologyId}) => {
+  const [comments, setComments] = useState([]);
+  let commentsLoaded = false;
+
+  useEffect(() => {
+    if(!commentsLoaded) {
+      fetchComments(apologyId);
+    }
+  }, [getComments, apologyId]);
+
+  const fetchComments = async (apologyId) => {
+    const data = await getComments(apologyId);
+    if(data && data.records) {
+      setComments(data.records);
+    }
+    commentsLoaded = true;
+  }
+
   const fullLetter = () => {
     return (
       <>
@@ -19,13 +38,16 @@ export const SorryLetter = ({aggrieved, perpetrator, eventDescription, apologyId
   return (
     <div className="letter-container">
       <div className="letter">
-        {fullLetter()}
+        <div className="whatsapp-container">
+            <div className="whatsapp">
+              <WhatsappShare aggrieved={aggrieved} perpetrator={perpetrator} eventDescription={eventDescription}/>
+            </div>
+          </div>
+        <div className="writing-container">{fullLetter()}</div>
         <div className="letter-footer">
           <div className="comments">
-            <CommentForm apologyId={apologyId} />
-          </div>
-          <div className="whatsapp">
-            <WhatsappShare aggrieved={aggrieved} perpetrator={perpetrator} eventDescription={eventDescription}/>
+            <CommentForm apologyId={apologyId} fetchComments={fetchComments} />
+            <CommentList comments={comments}/>
           </div>
         </div>
       </div>

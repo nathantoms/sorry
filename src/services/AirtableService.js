@@ -56,3 +56,19 @@ export async function addComment(apologyId, comment) {
 
   return data;
 };
+
+export async function getComments(apologyId) {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+      'Content-Type': 'application/json'
+    }
+  };
+
+  const { data } = await axios.get( 
+    `https://api.airtable.com/v0/appQmwSEub5AE32WR/Comments?filterByFormula=%7BApology%7D%3D%22${apologyId}%22`,
+    config
+  );
+
+  return data;
+};

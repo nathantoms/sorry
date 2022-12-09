@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './CommentForm.css';
 import { addComment } from '../services/AirtableService';
 
-export const CommentForm = ({apologyId}) => {
+export const CommentForm = ({apologyId, fetchComments}) => {
   const [formIsValid, setFormIsValid] = useState(false);
   const [commentForm, setCommentForm] = useState("")
 
@@ -23,6 +23,7 @@ export const CommentForm = ({apologyId}) => {
 
     setCommentForm("");
     setFormIsValid(false);
+    fetchComments();
   };
 
   return (
