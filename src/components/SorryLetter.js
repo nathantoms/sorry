@@ -12,15 +12,22 @@ export const SorryLetter = ({aggrieved, perpetrator, eventDescription, apologyId
   useEffect(() => {
     if(!commentsLoaded) {
       fetchComments(apologyId);
+      commentsLoaded = true;
     }
   }, [getComments, apologyId]);
 
-  const fetchComments = async (apologyId) => {
+  const fetchComments = async () => {
     const data = await getComments(apologyId);
     if(data && data.records) {
-      setComments(data.records);
+      const orderedRecords = orderComments(data.records)
+      setComments(orderedRecords);
     }
-    commentsLoaded = true;
+  }
+
+  const orderComments = (comments) => {
+    return comments.sort(function(a,b){
+      return new Date(b.createdTime) - new Date(a.createdTime);
+    });
   }
 
   const fullLetter = () => {
